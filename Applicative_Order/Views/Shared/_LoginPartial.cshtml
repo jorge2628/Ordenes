@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav"> 
+        @*<li>
+            @Html.ActionLink("Home", "Index", "Home")
+
+
+        </li>*@
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Administrative Area<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+
+
+                <li>
+
+                    @Html.ActionLink("Box Types", "Index", "BoxTypes")
+
+                </li>
+
+                <li>
+
+                    @Html.ActionLink("City", "Index", "Cities")
+
+                </li>
+
+
+                <li>
+
+                    @Html.ActionLink("Country", "Index", "Countries")
+
+                </li>
+
+                <li>
+                    @Html.ActionLink("Customer", "Index", "Customers")
+
+                </li>
+
+                <li>
+
+                    @Html.ActionLink("Farm", "Index", "Farms")
+
+                </li>
+
+                <li>
+
+                    @Html.ActionLink("Food Types", "Index", "FoodTypes")
+
+                </li>
+
+                <li>
+
+                    @Html.ActionLink("Order Types", "Index", "OrderTypes")
+
+                </li>
+
+                <li>
+                    @Html.ActionLink("Product Calla", "Index", "ProductCallas")
+
+                </li>
+
+
+                <li>
+                    @Html.ActionLink("Product Galleria", "Index", "ProductGallerias")
+
+                </li>  
+
+                <li>
+
+                    @Html.ActionLink("Seller", "Index", "Sellers")
+                </li>
+
+                <li>
+                    @Html.ActionLink("Sleeve Types", "Index", "SleeveTypes")
+
+                </li>
+
+            </ul>
+        </li>
+
+
+        <!-- Prueba-->
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Create new Order<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+
+
+                <li>
+
+                    @Html.ActionLink("New Order", "Create", "Orders")
+                    @Html.ActionLink("Protocol", "Index", "Protocols")
+
+
+                </li>
+            </ul>
+
+        </li>
+
+
+
+
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
