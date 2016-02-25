@@ -197,26 +197,59 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function () {
-            $('#rootwizard').bootstrapWizard({
-                onTabShow: function (tab, navigation, index) {
+        //$(document).ready(function () {
+        //    $('#rootwizard').bootstrapWizard({
+        //        onTabShow: function (tab, navigation, index) {
 
-                    // Dynamically change percentage completion on progress bar
+        //            // Dynamically change percentage completion on progress bar
+        //            var tabCount = navigation.find('li').length;
+        //            var current = index + 1;
+        //            var percentDone = (current / tabCount) * 100;
+        //            $('#rootwizard').find('#progressBar').css({ width: percentDone + '%' });
+
+        //            // Optional: Show Done button when on last tab;
+        //            // It is invisible by default.
+        //            $('#rootwizard').find('.last').toggle(current >= tabCount);
+
+        //            // Optional: Hide Next button if on last tab;
+        //            // otherwise it shows but is disabled
+        //            $('#rootwizard').find('.next').toggle(current < tabCount);
+        //        }
+        //    });
+        //});
+
+        $(document).ready(function () {
+             
+
+            $('#rootwizard').bootstrapWizard({
+                onNext: function (tab, navigation, index) {
+                        
+                    if (index ==  2) {
+                        // Make sure we entered the name
+                        if (!$('#customerID').val()) {
+                            $('#Error').html('Ingrese el Cliente');
+                            $('#Error').show();
+                            //alert('Ingrese el Nombre');
+                            $('#customerID').focus();
+                            //$('#name').text('Ingrese el Nombre')
+                            return false;
+                        }
+                          
+                    }
+                },
+
+
+                // Dynamically change percentage completion on progress bar
+                onTabShow: function (tab, navigation, index) {
                     var tabCount = navigation.find('li').length;
                     var current = index + 1;
                     var percentDone = (current / tabCount) * 100;
                     $('#rootwizard').find('#progressBar').css({ width: percentDone + '%' });
-
-                    // Optional: Show Done button when on last tab;
-                    // It is invisible by default.
-                    $('#rootwizard').find('.last').toggle(current >= tabCount);
-
-                    // Optional: Hide Next button if on last tab;
-                    // otherwise it shows but is disabled
-                    $('#rootwizard').find('.next').toggle(current < tabCount);
                 }
-            });
+            })
         });
+
+       
 
     </script>
 }
