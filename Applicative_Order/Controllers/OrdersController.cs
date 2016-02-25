@@ -39,10 +39,12 @@ namespace Applicative_Order.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
+
             ViewBag.customerID = new SelectList(db.Customers, "customerID", "company");
-            ViewBag.orderTypeID = new SelectList(db.OrderTypes, "orderTypeID", "description");
+            ViewBag.orderTypeID = new SelectList(db.OrderTypes, "orderTypeID", "name");
             ViewBag.productGalleriaID = new SelectList(db.ProductGallerias, "productGalleriaID", "code");
             ViewBag.idCarrier = new SelectList(db.Carriers, "idCarrier", "nameCarrier");
+
             return View();
         }
 
