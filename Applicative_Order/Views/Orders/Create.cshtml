@@ -34,16 +34,17 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="step1">
-                    <div id="cusID" hidden="hidden">
-                        <h5> ingreser el campo custormerID</h5>
-                    </div>
+                 
                     <div class="form-group">
                         @Html.LabelFor(model => model.customerID, "Customer", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             @Html.DropDownList("customerID", null, htmlAttributes: new { @class = "form-control" }, optionLabel : "")
                             @Html.ValidationMessageFor(model => model.customerID, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                        <div id="cusID" hidden="hidden" class="col-md-2">
+                            <h5> ingreser el campo custormer</h5>
+                        </div>
+                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.idCarrier, "Carrier", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -169,7 +170,7 @@
                         @Html.LabelFor(model => model.protocol, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <div class="checkbox">
-                                @Html.EditorFor(model => model.protocol)
+                                @Html.EditorFor(model => model.protocol, new { htmlAttributes = new { @class = "form-control", @onclick = "protocoloIsTrue()" } })
                                 @Html.ValidationMessageFor(model => model.protocol, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -199,27 +200,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        //$(document).ready(function () {
-        //    $('#rootwizard').bootstrapWizard({
-        //        onTabShow: function (tab, navigation, index) {
-
-        //            // Dynamically change percentage completion on progress bar
-        //            var tabCount = navigation.find('li').length;
-        //            var current = index + 1;
-        //            var percentDone = (current / tabCount) * 100;
-        //            $('#rootwizard').find('#progressBar').css({ width: percentDone + '%' });
-
-        //            // Optional: Show Done button when on last tab;
-        //            // It is invisible by default.
-        //            $('#rootwizard').find('.last').toggle(current >= tabCount);
-
-        //            // Optional: Hide Next button if on last tab;
-        //            // otherwise it shows but is disabled
-        //            $('#rootwizard').find('.next').toggle(current < tabCount);
-        //        }
-        //    });
-        //});
-
+      
         $(document).ready(function () {
              
 
@@ -230,7 +211,7 @@
                         // Make sure we entered the name
                         if (!$('#customerID').val()) {
                    
-                           
+                            $("#cusID").removeAttr("hidden");
                             //alert('Ingrese el Nombre');
                             $('#customerID').focus();
                             //$('#customerID').text('Ingrese el Nombre')
