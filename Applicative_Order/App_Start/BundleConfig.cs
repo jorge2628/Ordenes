@@ -25,6 +25,7 @@ namespace Applicative_Order
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Style1.css",
                       "~/Content/site.css"));
 
                   bundles.Add(new ScriptBundle("~/bundles/WizardBootstrap").Include(
